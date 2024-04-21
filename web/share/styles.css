@@ -1,0 +1,274 @@
+@font-face {
+  font-family: 'gamtanroad';
+  src: url('font/Regular.ttf') format('truetype');
+}
+
+
+body {
+  /* width: 100vw;
+  height: 100vh; */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background:url("background.jpg"); */
+  overflow: hidden;
+}
+
+/* 네비게이션 바 스타일 */
+nav {
+  background: #4b62ad;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  margin-bottom: 8px;
+  box-shadow: 0 2px 7px 2px rgba(0,0 , 0, 0.2);
+  z-index:10;
+  width: 100%;
+  
+}
+
+.logo {
+  padding: 0px 10px 0 10px;
+  color: white;
+  font-size: 29px;
+  line-height: 20px;
+  /* font-weight: bold; */
+  font-family: "Baloo Bhaijaan 2" !important;
+  margin-left:5px;
+  /* margin-bottom: 1px; */
+  margin-top: 5px;
+  letter-spacing: 0px;
+}
+
+.logo small {
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+.logo a {
+  text-decoration-line: none;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 5px;
+}
+
+.nav-links li button {
+  color: white;
+  font-size: 13px;
+  padding: 7px 7px;
+  border-radius: 7px;
+  border: none;
+  text-decoration-line: none;
+  font-weight: 200;
+  background-color: #304fb7bd ;
+  margin-right: 7px;
+  
+}
+
+.nav-links li button:hover,
+.nav-links li button.active {
+  background: #405cb9d5;
+  transition: background-color 0.3s;
+}
+
+
+.card {
+  display: grid;
+  grid-template-columns: 400px;
+  grid-template-rows: 130px 300px 60px;
+  grid-template-areas: "text" "image"  "stats";
+
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0px 0px 25px rgba(0,0,0,0.3);
+  font-family: roboto;
+  text-align: center;
+  
+  
+
+  
+  cursor: pointer;
+  margin:50px;
+}
+.card-image img{
+  margin-top: 15px;
+  box-shadow: -1px 0px 25px rgba(0,0,0,0.1);
+  background-size: cover;
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 11px;
+  transition: 0.5s ease;
+}
+
+.card-image img:hover {
+  transform: scale(1.05);
+}
+
+.card-text {
+  grid-area: text;
+  margin: 25px;
+}
+.card-text .creator {
+  color: #303f6f;
+  font-size:13px;
+  margin-bottom: 0;
+}
+.card-text p {
+  color: grey;
+  font-size:15px;
+  font-weight: 300;
+  
+}
+.card-text h2 {
+  margin:0px auto 10px auto;
+  font-size:27px;
+  color: #3d3d3d;
+  font-family: 'gamtanroad';
+  line-height: 1.35;
+}
+
+#extraLink {text-decoration: none;}
+
+.card-stats {
+  grid-area: stats; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color:  #4b62ad;
+}
+.card-stats .stat {
+  padding:3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  
+}
+
+.card-stats .stat button {
+  background-color: #4b62ad;
+  border: none;
+  color: white;
+  height:80%;
+  width:85%;
+  transition: 0.5s ease;
+  border-radius: 7px;
+  /* font-weight: bold; */
+}
+.card-stats .border {
+  border-left: 1px solid  #3c4e8a;
+  
+}
+
+.card-stats .stat button:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+}
+
+body, .comment-modal {
+  font-family: "Nanum Gothic";
+}
+
+@media screen and (max-width: 767px) {
+
+  .card {
+    grid-template-columns: 400px;
+    grid-template-rows: 110px 280px 50px;
+    margin: 40px auto;
+  }
+  .card-image img {
+    max-width: 85%;
+  }
+  .card-text h2 {
+    font-size: 20px;
+  }
+
+
+
+}
+
+
+@media screen and (max-width: 500px) and (min-width: 396px) {
+
+  nav{
+    height: 50px;
+  }
+
+  .body {
+    margin: 0 auto;
+  }
+  
+  .card {
+    grid-template-columns: 350px;
+    grid-template-rows: 110px 230px 50px;
+    margin: 30px auto;
+  }
+  .card-image img {
+    max-width: 80%;
+  }
+  .card-text h2 {
+    font-size: 20px;
+  }
+
+  
+
+}
+
+@media screen and (max-width: 395px) {
+  nav{
+    height: 50px;
+  }
+
+  .body {
+    margin: 0 auto;
+  }
+
+  .card {
+    grid-template-columns: 315px;
+    grid-template-rows: 110px 230px 50px;
+    margin: 20px auto;
+  }
+  .card-image img {
+    max-width: 80%;
+  }
+  .card-text h2 {
+    font-size: 20px;
+  }
+
+  .card-stats .stat button {
+    font-size: 11px;
+  }
+
+}
+
+@media screen and (min-width: 501px) {
+
+  nav {
+    margin-top: 40px;
+    height: 50px;
+    max-width: 405px;
+    border-radius: 15px;
+  }
+
+  .card {
+    margin-top: 0;
+  }
+  
+  }
+

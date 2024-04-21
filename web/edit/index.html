@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>다모앗 스팟 정보수정</title>
+	<meta name="description" content="전세계 사진명소 지도 다모앗! 의 스팟 수정 사이트입니다.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/app-icon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/app-icon-16x16.png"/>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../font.css">
+    <link rel="stylesheet" type="text/css" href="edit_styles.css" />
+    <link
+      rel="stylesheet"
+      href="../map/leaflet/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo" >
+        <!-- <img src="../images/icon-2.png" alt="Logo" id="navLogo"/> -->
+        <a href="/">spot<small> . damoat</small></a>
+      </div>
+      <label class="nav-toggle-label">
+        <span></span>
+      </label>
+      <ul class="nav-links">
+        <li><a href="/">돌아가기</a></li>
+      </ul>
+      
+    </nav>
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+    <form id="inputForm" method="POST" onsubmit="submitData(event)">
+      <p id="instruction">필요할 경우, 기존의 스팟 정보를<Br>직접 복사해서 붙여넣어 주십시오.</small></p>
+      <input type="email" id="creator_email" placeholder="이메일" maxlength="30" required>
+      <p id="instruction">해당 스팟을 제보할때 입력한 이메일을 입력해 주세요. </p>
+      <input type="text" id="name" placeholder="수정할 장소 제목 (예: [송도]G타워 33층 전망대)" maxlength="20" required>
+      <p id="instruction">스팟 이름 맨앞에 [지역명]을 밝혀주세요.<br>(지역명을 모를경우 나라명 기입)</p>
+      <textarea id="description" placeholder="수정할 설명 (최대 1000자, 줄바꿈 가능)" maxlength="1000" rows="20" required></textarea>
+      <p id="instruction"><small>링크는 https:// 또는 http:// 로 시작해야 합니다.</small></p>
+      <input type="text" id="link" placeholder="수정할 링크 주소 (선택사항)" maxlength="150">
+      <div class="g-recaptcha" data-sitekey="6LcB8rApAAAAAB3H3JMN4OlRtfpkW78dRpTAfsdA"></div>
+      <button id='inputform_button'>수정 요청</button>
+      <p id="instruction">스팸방지를 위해 수정 요청자의 IP가 수집됩니다.</p>
+    </form>
+    
+    
+  
+   
+    <script  src="../map/leaflet/dist/leaflet.js"></script>
+    <script src="edit_script.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+  </body>
+</html>

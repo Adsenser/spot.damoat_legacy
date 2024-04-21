@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Baloo Bhaijaan 2";
+  src: url("fonts/BalooBhaijaan2-Medium.woff2") format("woff2"),
+    url("fonts/BalooBhaijaan2-Medium.woff") format("woff"),
+    url("fonts/BalooBhaijaan2-Medium.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  src: local("Pretendard"), url("fonts/NanumGothic.woff2") format("woff2"),
+    url("fonts/NanumGothic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  src: local("Pretendard"), url("fonts/NanumGothicBold.woff2") format("woff2"),
+    url("fonts/NanumGothicBold.woff") format("woff");
+
+  font-weight: bold;
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>스팟 다모앗 - 국내/해외 사진 명소 공유 지도</title>
+    <meta name="description" content="멋진 사진을 찍고 싶은데 어디서 찍어야할지 모르겠다면.. 이제 스팟 다모앗에서 멋진 사진가님들의 스팟 명소를 확인하세요!">
+    <meta name="keywords" content="사진 스팟,사진 지도,출사지 지도,사진공유지도,photo map,photo spot map">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scalable=no",  />
+    <link rel="canonical" href="https://spot.damoat.com">
+    <meta property="og:url" content="https://spot.damoat.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="스팟 다모앗" />
+    <meta property="og:description" content="전세계 사진 명소 공유 지도" />
+    <meta property="og:image" content="images/app-icon-512x512.png" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="스팟 다모앗"/>
+    <meta name="twitter:description" content="전세계 사진 명소 공유 지도"/>
+    <meta name="twitter:image" content="https://spot.damoat.com/images/app-icon-512x512.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/app-icon-180x180.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/app-icon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/app-icon-16x16.png"/>
+    <script  src="map/leaflet/dist/leaflet.js" ></script>
+    <script  src="map/leaflet.markercluster/dist/leaflet.markercluster.js" ></script>
+    <script  src="start.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="map/leaflet/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="map/leaflet.markercluster/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="map/leaflet.markercluster/dist/MarkerCluster.Default.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="global.css">
+    <link rel="stylesheet" type="text/css" href="font.css">
+    
+    
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X05XXJSBW9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-X05XXJSBW9');
+    </script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <!-- <img src="../images/icon-5.png" alt="Logo" id="navLogo"/> -->
+        <a href="/">spot<small> . damoat</small></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/submit">스팟 제보</a></li>
+      </ul>
+    </nav>
+
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
+
+        <!-- 초기 모달창  -->
+    <div id="initialModal" class="initial-modal">
+      <!-- 모달 내용 -->
+      <div class="initial-modal-content">
+        <div class='initial-top'>
+          <div class="top">
+            <div class="marker-icon">
+              <img src="images/2.png" alt="marker">
+              <p><strong>주간 사진</strong></p>
+            </div>
+            <div class="marker-icon">
+              <img src="images/1.png" alt="marker">
+              <p><strong>야간 사진</strong></p>
+            </div>
+            <div class="marker-icon">
+              <img src="images/0.png" alt="marker">
+              <p><strong>은하수 사진</strong></p>
+            </div>
+          </div>
+          <div class="bottom">
+            <p>
+              아메리카, 유럽은 <strong>지도 좌측</strong>에 있습니다. 
+            </p>
+          </div>
+        </div>
+        <div class="initial-middle">
+          <img src="images/cluster_example.png" alt="cluster">
+          <p>해당 구역의 <strong>스팟수</strong>를 알려줍니다.<br><small>(터치시 해당 구역으로 이동)</small></p>
+          
+        </div>
+        <a id="bug-report" href="https://forms.gle/WFrHagPgtLDC5ThK9">버그제보</a>
+      </div>
+    </div>
+
+    <script src="main.js" defer ></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
+  </body>
+</html>
+
+
+<div id="loading">현재 위치를 찾는 중...<br /><strong>(위치권한을 허용해 주세요)</strong></div>
+
+    <!-- 댓글 보기 모달 -->
+    <div id="viewCommentsModal" class="comment-modal" onclick="closeViewCommentsModal()">
+      <div class="modal-header">
+        <button id="commentWriteButton" onclick="addComment(current_coordinates)">댓글작성</button>
+        <span class="comment-close" onclick="closeViewCommentsModal()">&times;</span>
+      </div>
+      
+      <div class="comment-modal-content">
+        <div id="totalCommentsLabel"></div>
+        <div id="commentsList"></div>
+      </div>
+    </div>
+
+    <!-- 댓글 작성 모달 -->
+<div id="commentModal" class="comment-modal">
+  <div class="comment-modal-content-submit">
+    <div id="comment-submit-header">
+      <h2>댓글작성</h2>
+      <span class="comment-submit-close" onclick="closeCommentModal()">&times;</span>
+    </div>
+    <form id="commentForm" action="comment.php" method="post" onsubmit="submitComment(event)">
+      <input type="hidden" name="placemark_id" id="placemarkIdInput" value="여기에_placemark_id_값" />
+      <input
+        type="text"
+        name="user_name"
+        id="userNameInput"
+        placeholder="닉네임"
+        minlength="2"
+        maxlength="10"
+        required
+      />
+      <input
+        type="password"
+        name="user_email"
+        id="userEmailInput"
+        placeholder="비밀번호 (5자리 이상)"
+        minlength="5"
+        maxlength="30"
+        required
+      />
+      <textarea
+        name="comment"
+        id="commentInput"
+        placeholder="댓글 입력(최대 100자, 줄바꿈 가능)"
+        maxlength="105"
+        required
+      ></textarea>
+      <span id="charCountDisplay">0/100</span>
+      <div class="g-recaptcha" data-sitekey="6LcB8rApAAAAAB3H3JMN4OlRtfpkW78dRpTAfsdA"></div>
+      <p id="comment-submit-instruction">스팸방지를 위해 작성자의 IP가 수집됩니다.</p>
+      <button type="submit" id="comment-submit-button">제출하기</button>
+    </form>
+  </div>
+</div>
+
+<!-- 길찾기 모달 -->
+<div id="routeModal" class="comment-modal" onclick="closeRouteModal()">
+  <div class="route-modal-header">
+    <span class="comment-close" onclick="closeRouteModal()">&times;</span>
+  </div>
+  <div class="comment-modal-content"> 
+    <p id="RouteInstruction">카카오/구글 지도는 앱 없이도 사용이 가능합니다.</p> 
+    <div id="routeMapSelect">  
+      <button id="naverMap">
+        <svg width="40px" height="40px" viewBox="0 0 24 24">
+          <image href="/images/navermap.svg" width="24px" height="24px"/>
+        </svg>
+        네이버 지도
+      </button>
+      <button id="KakaoMap">
+        <svg width="40px" height="40px" viewBox="0 0 24 24">
+          <image href="/images/kakaomap.svg" width="24px" height="24px" />
+        </svg>
+        카카오 지도
+      </button>
+      <button id="googleMap">
+        <svg width="40px" height="40px" viewBox="0 0 24 24">
+          <image href="/images/googlemap.svg" width="24px" height="24px" />
+        </svg>
+        구글 지도
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+
+<!-- 사진 보기 모달 -->
+<div id="viewPhotosModal" class="comment-modal" >
+  <div class="modal-header">
+    <button id="commentWriteButton" onclick="openPhotoUploadModal(current_coordinates)">사진추가</button>
+    <span class="comment-close" onclick="closePhotosModal()">&times;</span>
+  </div>
+  <div class="photos-modal-content">
+    <div id="photoCount"></div>
+    <div id="photosGrid" class="photos-grid"></div>
+  </div>
+  
+</div>
+
+<!-- 사진 상세 정보 모달 -->
+
+</div>
+<div id="photoDetailModal" class="comment-modal" style="display:none;" >
+  <div id="detailBackground">
+    <div id="detailContainer">
+      <div id="detailInformation">
+        <div class="modal-photo-creator"></div>
+        <div class="modal-photo-date"></div>
+      </div>
+      <span class="comment-close" onclick="closePhotoDetailModal()">&times;</span>
+      
+    </div>
+    <div id="detailDeleteReprotButton">
+      
+      <button class="delete-photo-button">삭제</button>
+      <button class="view-photo-button">사진 크게 보기</button>
+      <button class="report-photo-button">신고</button>
+    </div>
+    <div id="largePhotoContainer">
+        <img class="modal-photo-img" src="" alt="Photo" />
+    </div>
+    <div id="detailDeleteReprotButton">
+      <button class="previous-photo-button" >◀︎</button>
+      <button class="next-photo-button" >▶︎</button>
+    </div>
+  </div>
+    
+  
+</div>
+
+<!-- 사진 추가 모달 -->
+<div id="addPhotoModal" class="comment-modal">
+  
+    <div class="comment-modal-content-submit">
+      <div id="comment-submit-header">
+        <h2>사진 추가</h2>
+        <span class="comment-submit-close" onclick="closePhotoModal()">&times;</span>
+      </div>
+      <form id="photoUploadForm" method="POST">
+        <input
+        type="text"
+        id="UploadUserNameInput"
+        name="nickname"
+        placeholder="닉네임"
+        minlength="2"
+        maxlength="15"
+        required
+        />
+        
+        <input
+        type="password"
+        id="UploadUserEmailInput"
+        name="email"
+        placeholder="비밀번호 (5자리 이상)"
+        minlength="5"
+        maxlength="20"
+        required
+        />
+       
+        <p id="instruction">사진을 아래 영역으로 드래그 해서 첨부할 수도 있습니다.<br><small>지원하는 형식: jpg, jpeg, png, webp</small></p>
+        <input type="file" id="photoInput" name="file" required>
+        
+        <p id="instruction">스팸방지를 위해 IP주소가 수집됩니다.</p>
+        
+        <div id="turnstile-widget"></div>
+        <button id="uploadButton" type="submit">업로드</button>
+      </form>
+ 
+    </div>
+</div>
+
+<!-- 로딩창 모달  -->
+<div id="loadingModal">
+  <div class="loading-spinner"></div>
+</div>
+
+<!-- 검색 모달  -->
+<div id="searchModal" class="modal">
+  <div class="modal-content">
+    
+    <div class="search-modal-top">
+      <input type="text" id="searchInput" placeholder="검색할 장소 입력">
+      <button id="searchButton">검색</button>
+    </div>
+    <p id="instruction">오픈스트리트맵에 등록된 장소가 검색됩니다.<br><small>예시: 오사카</small></p>
+    <!-- 로딩서클  -->
+    <div id="Locationloading" class="loading-circle"></div>
+    <ul id="searchResults"></ul>
+    <span class="modal-close" onclick="closeSearchModal()">닫기</span>
+  </div>
+</div>
+
+<!--추가 설명 모달  -->
+<div id="descriptionModal" class="description-modal">
+  <div class="description-modal-content">
+    <p id="fullDescription"></p>
+  </div>
+  <span id="descriptionModalClose" class="modal-close" onclick="closeDescriptionModal()">닫기</span>
+</div>

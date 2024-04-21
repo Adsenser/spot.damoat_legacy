@@ -1,0 +1,535 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: "Nanum Gothic" !important;
+}
+
+#map-container {
+  display: block;
+  width: 95%;
+  margin-top: 5%;
+  margin: 3% auto;
+  height: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.custom-map-control-button {
+  background-color: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  margin: 10px;
+  padding: 0 0.5em;
+  height: 30px;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color:#232323;
+  font-weight: 500;
+}
+
+.custom-map-control-button:hover {
+  background-color: #ebebeb;
+}
+
+#loading {
+  display: none;
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  color: #121212;
+  width: 280px;
+}
+
+html,
+body {
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  background: #f8f8ff;
+}
+
+/* body {
+  -webkit-overflow-scrolling: touch;
+} */
+
+#submit_image {
+  display: block; margin: 30px auto 10px auto;
+  width: 300px;
+}
+
+.instruction {
+  font-size: 12px;
+  text-align: center;
+  color:#595959
+}
+
+.checking-section {
+  border-radius: 6px;
+  padding: 10px;
+  border: 1.5px solid #e6e6e6;
+  margin: 20px auto;
+  width: 70%;
+  background-color: #ffffffcf;
+}
+
+#instruction {
+  font-size: 12px;
+  text-align: center;
+  color:#595959
+}
+/* 사용자 입력 폼 스타일 */
+#inputForm {
+  display: block;
+  width: 95%;
+  margin: 20px auto 25px auto;
+  background: #f4f6ff;
+  padding: 2px;
+  position: relative;
+  border-radius: 6px;
+  border: 0.3px solid #b2b6c364;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+}
+
+#inputForm input[type="text"],
+#inputForm input[type="email"],
+#inputForm textarea {
+  width: calc(100% - 10px); /* 전체 폼 너비에서 양쪽 패딩을 제외한 크기 */
+  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+  padding: 10px;
+  margin: 10px 5px 10px 6px;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  resize: none;
+}
+
+#inputForm input, #inputForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  
+}
+
+#inputForm textarea {
+  width: calc(100% - 10px); /* 폼 너비에서 양쪽 패딩을 제외한 크기 */
+  height: 400px; /* 텍스트 박스의 높이 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  word-wrap: break-word;
+  word-break: break-word;
+  margin: 10px 5px 0px 5px;
+}
+
+.select-section {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  
+}
+
+.placeDropdown{
+  display: inline-block;
+  width: 35%;
+  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  resize: none;
+  background: rgb(252, 252, 252);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#inputform_button {
+  
+  width: 100%;
+  padding: 15px ;
+  background-color: #4b62ad;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 29px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.g-recaptcha {
+  margin: 12px auto;
+  margin-top: 15px;
+  width: 304px;
+}
+
+#inputform_button:hover {
+  background-color: #2f3e70;
+}
+
+
+
+
+/* 네비게이션 바 스타일 */
+nav {
+  background: #4b62ad;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top:0;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 7px 2px rgba(0,0 , 0, 0.2);
+  z-index:10000;
+  width: 100%;
+}
+
+.logo {
+  padding: 0px 10px 0 10px;
+  color: white;
+  font-size: 29px;
+  line-height: 20px;
+  /* font-weight: bold; */
+  font-family: "Baloo Bhaijaan 2" !important;
+  margin-left:5px;
+  /* margin-bottom: 1px; */
+  margin-top: 5px;
+  letter-spacing: 0px;
+}
+
+.logo small {
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+.logo a {
+  text-decoration-line: none;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 5px;
+}
+
+.nav-links li a {
+  color: white;
+  font-size: 17px;
+  padding: 7px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  text-decoration-line: none;
+  font-weight: 500;
+  background-color: #596eb69e ;
+  margin-right: 7px;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background: #405cb9d5;
+  transition: background-color 0.3s;
+}
+
+/* .logo img {
+  height: 34px; 
+  vertical-align: middle;
+  padding-bottom: 7px;
+} */
+
+
+
+/* 검색 모달창  */
+
+/* 이건 지도 안에 들어가는 버튼임  */
+.leaflet-top .leaflet-control {
+  margin-bottom: 0px;
+}
+
+.search-button {
+  font-weight: 400;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  color:rgb(49, 49, 49);
+  margin-top: 5px;
+}
+
+.modal {
+  animation: fadeIn 0.3s ease-out forwards;
+
+  cursor: pointer; /* iOS에서 클릭 이벤트 트리거 개선 */
+  display: none; 
+  position: fixed; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.3); 
+  z-index: 1000;
+  overflow:hidden;
+  touch-action: none;
+}
+
+.modal-content {
+  animation: fadeIn 0.4s ease-out forwards;
+
+  background-color: #ffffff;
+  margin: 27% auto 27% auto; 
+  padding: 26px;
+  width: 80%; 
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.search-modal-top {
+  display: flex;
+  justify-content: center;
+}
+
+#searchInput {
+  background-color: #fff;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  margin: 10px;
+  padding: 0 0.5em;
+  height: 40px;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color:#232323;
+  font-weight: 500;
+  width: 60%;
+}
+
+#searchButton {
+  background-color: #4b62ad;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  margin: 10px 5px;
+  padding: 0 0.5em;
+  height: 40px;
+  font-size: 13px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color:#232323;
+  font-weight: 600;
+  width: 30%;
+  color: white;
+}
+
+#searchResults {
+  list-style: none;
+  margin: 3px;
+  padding: 0;
+  max-height: 40vh; /* 적절한 최대 높이 설정 */
+  overflow-y: auto; /* 스크롤바 추가 */
+}
+
+#searchResults li {
+  padding: 5px;
+  
+}
+
+.search-result {
+  margin: 5px;
+  background-color: #f6f6f6b2;
+  border-radius: 6px;
+  padding: 3px;
+  box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+}
+
+#searchResults li:hover {
+  background-color: #f7f7f7;
+}
+
+.modal-close {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 7px;
+  border-radius: 6px;
+  color:#595959;
+  margin-top:10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading-circle {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  display: none; /* 기본적으로 숨김 */
+  position:relative; /* 뷰포트에 상대적으로 배치 */
+  margin: 0 auto;
+}
+
+/* Safari를 위한 애니메이션 */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+/* 나머지 브라우저를 위한 애니메이션 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 사진 위치 정보 추출 파트  */
+#inputImageBlock {
+  margin: 10px auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  padding: 13px;
+}
+
+#exif_button_container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* exif 모달창 여는 버튼  */
+#exif_button {
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.2);
+  color:#595959;
+  border: none;
+  border-radius: 15px;
+  padding: 13px;
+  background-color: #ffffff00;
+  width: 60%
+}
+
+@media screen and (min-width: 1025px) {
+
+  body {
+    max-width: 400px;
+    margin:5vh auto 5vh auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+    max-height: 83vh;
+    
+  }
+
+  nav {
+    max-width: 400px;
+    margin:5vh auto 0 auto;
+    border-radius: 10px;
+    
+  }
+
+  .modal-content{
+    width: 400px;
+    margin: 27vh auto 27vh auto;
+  }
+
+  #inputform_button {
+    font-size: 20px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .g-recaptcha {
+    margin: 12px auto;
+    margin-top: 15px;
+    width: 304px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    /* overflow-y: hidden; */
+  }
+
+  .content {
+    overflow-x: hidden;
+  }
+
+  #map {
+    height: 100%;
+  }
+
+  .custom-map-control-button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  #inputForm {
+    width: 94%;
+    
+  }
+
+  #inputForm input[type="text"],
+  #inputForm input[type="email"],
+  #inputForm textarea {
+    width: calc(100% - 10px); /* 모바일 환경에 맞게 조금 더 줄임 */
+  }
+
+  #inputForm textarea {
+    width: calc(100% - 10px); /* 모바일 환경에 맞게 조금 더 줄임 */
+    height: 190px; /* 모바일 환경에서는 높이를 조금 줄임 */
+  }
+
+}

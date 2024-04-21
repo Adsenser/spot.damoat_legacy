@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>다모앗 스팟 제보</title>
+    <meta name="description" content="'세계 사진명소 지도 다모앗!'의 스팟 제보 사이트 입니다.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/app-icon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/app-icon-16x16.png"/>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="../map/leaflet/dist/leaflet.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../font.css">
+    <link rel="stylesheet" type="text/css" href="sub_styles.css" />
+    <script  src="../map/leaflet/dist/leaflet.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo" >
+        <!-- <img src="../images/icon-2.png" alt="Logo" id="navLogo"/> -->
+        <a href="/">spot<small> . damoat</small></a>
+      </div>
+      <label class="nav-toggle-label">
+        <span></span>
+      </label>
+      <ul class="nav-links">
+        <li><a href="/">돌아가기</a></li>
+      </ul>
+      
+    </nav>
+    
+
+    
+    
+    <img id="submit_image" src="/images/submit_bottom.png" alt="damoat_girl">
+	  <div id="exif_button_container">
+      <button id='exif_button' onclick="showExifModal()">사진에서 위치 정보 추출</button>
+    </div>
+    <p id="instruction">사진에 GPS 정보가 있을 경우, <br>위 버튼을 눌러 좌표추출을 할 수 있습니다.</p>
+    <form id="inputForm" >
+      <div class="select-section">
+        <select id="placeDropdown" class="placeDropdown" required>
+          <option value="" selected disabled>사진 타입 선택</option>
+          <option value="0">은하수</option>
+          <option value="1">야간</option>
+          <option value="2">주간</option>
+          
+        </select>
+        <select id="sectorDropdown" class="placeDropdown" required>
+          <option value="" selected disabled>대륙 선택</option>
+          <option value="korea">국내(대한민국)</option>
+          <option value="asia">아시아</option>
+          <option value="europe">유럽</option>
+          <option value="america">아메리카</option>
+          <option value="africa">아프리카/중동</option>
+          <option value="etc">기타(+잘모르는 경우)</option>
+          
+        </select>
+      </div>
+      
+      <input type="text" id="name" placeholder="스팟 이름 (예: [송도]G타워 33층 전망대)" minlength="5" maxlength="20" required>
+      <p id="instruction">스팟 이름 맨앞에 <strong>[지역명]</strong>을 밝혀주세요.<br>(지역명을 모를경우 나라명 기입)</p>
+      <textarea id="description" placeholder="설명 (최대 1000자, 줄바꿈 가능) " maxlength="1000" rows="20" minlength="10" required></textarea>
+      <p id="instruction">링크는 추후 수정 및 추가 가능합니다.<br><small>링크는 <strong>https://</strong> 또는 <strong>http://</strong> 로 시작해야 합니다.</small></p>
+      <input type="text" id="link" placeholder="설명에 추가할 링크 주소 (선택사항)" maxlength="145">
+      
+      <p id="instruction">제보할 스팟 위치를 지도에서 터치하면 <strong>파란 마커가 </strong>생성됩니다.</p>
+      <p id="instruction">아메리카, 아프리카 대륙과 유럽은 <strong>지도 좌측</strong>에 있습니다. </p>
+      <div id="map-container">
+        <div id="map"></div>
+      </div>
+      <p id="instruction"><small>현위치 찾기, 사진에서 위치 추출을 해도 꼭 정확한 위치를 터치해서 <br><strong>파란 마커가 보여야</strong> 합니다.</small></p>
+      <input type="text" id="creator" placeholder="제보자 닉네임 (최대 10자)" maxlength="10" required>
+      <input type="email" id="creator_email" placeholder="이메일" maxlength="30" required>
+      <p id="instruction">이메일은 추후 스팟 정보를 수정할때 필요합니다.<br><small>(단방향 암호화되어 분실 시 복구 불가)</small></p>
+      
+      
+      
+      <div class="g-recaptcha" data-sitekey="6LcB8rApAAAAAB3H3JMN4OlRtfpkW78dRpTAfsdA"></div>
+      <p id="instruction">스팟 좌표는 추후에 <strong>절대 수정 불가</strong>하니 한번더 확인해 주십시오</p>
+      <div class="checking-section">
+        <p id="instruction" class="instruction"><strong>현재 선택된 좌표:</strong> <p id="coordinationCheckLat" class="instruction">없음</p><p id="coordinationCheckLng" class="instruction"></p> </p>
+      </div>
+      
+
+      <button id='inputform_button' onclick="submitData(event)">제보하기</button>
+      
+    </form>
+    
+    
+    <script src="sub_script.js" defer></script>
+    <script src='https://www.google.com/recaptcha/api.js' defer></script>
+    <script src="exif.js"></script>
+  </body>
+</html>
+
+<!-- 현위치 찾기 화면  -->
+<div id="loading">현재 위치를 찾는 중...<br /><strong>(위치권한을 허용해 주세요)</strong></div>
+
+<!-- 검색 모달  -->
+
+<div id="searchModal" class="modal">
+  <div class="modal-content">
+    
+    <div class="search-modal-top">
+      <input type="text" id="searchInput" placeholder="검색할 장소 입력">
+      <button id="searchButton">검색</button>
+    </div>
+    <p id="instruction">오픈스트리트맵에 등록된 장소가 검색됩니다.<br><small>예시: 오사카</small></p>
+    <!-- 로딩서클  -->
+    <div id="Locationloading" class="loading-circle"></div>
+    <ul id="searchResults"></ul>
+    <span class="modal-close" onclick="closeSearchModal()">닫기</span>
+  </div>
+</div>
+
+<!-- 사진 좌표정보 추출 모달  -->
+
+<div id="exifModal" class="modal">
+  <div class="modal-content">
+    <p id="instruction">좌표가 추출된 뒤 지도에 <strong>빨간원으로</strong> 표시됩니다. </p>
+    <p id="instruction">이후, 지도에서 정확한 위치를 터치해 주십시오.</p>
+    <div id="inputImageBlock">
+      <input type="file" id="image-input" accept="image/*">
+    </div>
+    <p id="instruction"><small>HEIF 확장자는 지원하지 않습니다.</small></p>
+    <span class="modal-close" onclick="closeExifModal()">닫기</span>
+  </div>
+</div>

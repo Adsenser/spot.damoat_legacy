@@ -1,0 +1,250 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: "Nanum Gothic" !important;
+}
+
+#map-container {
+    display: block;
+    width: 95%;
+    margin: 3% auto;
+    margin-bottom: 5%;
+    height: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    /* z-index:0; */
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    /* z-index:0; */
+  }
+  
+  
+  
+  html,
+  body {
+    margin: 0 auto;
+    padding: 0;
+    overflow-y: auto;
+    touch-action: pan-y;
+    background: #f8f8ff;
+    overflow-x: hidden;
+  }
+  
+  /* body {
+    -webkit-overflow-scrolling: touch;
+  } */
+  
+  #instruction {
+    font-size: 12px;
+    text-align: center;
+    color:#595959
+  }
+  /* 사용자 입력 폼 스타일 */
+  #inputForm {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    background: #f4f6ff;
+    padding: auto;
+    position: relative;
+    overflow-x: hidden;
+    
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    
+  }
+  
+  #inputForm input[type="text"],
+  #inputForm input[type="email"],
+  #inputForm textarea {
+    width: calc(100% - 10px); /* 전체 폼 너비에서 양쪽 패딩을 제외한 크기 */
+    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+    padding: 10px;
+    margin: 10px 5px 10px 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    
+  }
+
+  #inputForm input, #inputForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+  }
+  
+  #inputForm textarea {
+    width: calc(100% - 10px); /* 폼 너비에서 양쪽 패딩을 제외한 크기 */
+    height: 300px; /* 텍스트 박스의 높이 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    word-wrap: break-word;
+    word-break: break-word;
+    margin: 10px 5px 0px 5px;
+    overflow-y: auto;
+  }
+  
+  .g-recaptcha {
+    margin: 12px auto;
+    margin-top: 15px;
+    width: 304px;
+  }
+  
+  
+  
+  #inputform_button {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #4b62ad;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 29px;
+    margin: 10px auto;
+    align-items: center;
+  }
+  
+  
+  #inputform_button:hover {
+    background-color: #005ea6;
+  }
+  
+  
+  /* 네비게이션 바 스타일 */
+  nav {
+    background: #4b62ad;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 7px 2px rgba(0,0 , 0, 0.2);
+  }
+  
+  .logo {
+    padding: 0px 10px 0 10px;
+    color: white;
+    font-size: 29px;
+    line-height: 20px;
+    /* font-weight: bold; */
+    font-family: "Baloo Bhaijaan 2" !important;
+    margin-left:5px;
+    /* margin-bottom: 1px; */
+    margin-top: 5px;
+    letter-spacing: 0px;
+  }
+  
+  .logo small {
+    font-size: 14px;
+    letter-spacing: 0.1px;
+  }
+  
+  .logo a {
+    text-decoration-line: none;
+    color: white;
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin: 0 5px;
+  }
+  
+  .nav-links li a {
+    color: white;
+    font-size: 17px;
+    padding: 7px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration-line: none;
+    font-weight: 500;
+    background-color: #596eb69e ;
+    margin-right: 7px;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    background: #405cb9d5;
+    transition: background-color 0.3s;
+  }
+  
+  .logo img {
+    height: 34px; 
+    vertical-align: middle;
+    padding-bottom: 7px;
+  }
+
+  @media screen and (max-width: 767px) {
+  
+    .container {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      /* overflow-y: hidden; */
+    }
+  
+    .content {
+      overflow-x: hidden;
+    }
+  
+    #map {
+      height: 100%;
+    }
+  
+
+  
+    #inputForm {
+      width: 94%;
+      
+    }
+  
+    #inputForm input[type="text"],
+    #inputForm input[type="email"],
+    #inputForm textarea {
+      width: calc(100% - 10px); /* 모바일 환경에 맞게 조금 더 줄임 */
+    }
+  
+    #inputForm textarea {
+      width: calc(100% - 10px); /* 모바일 환경에 맞게 조금 더 줄임 */
+      height: 250px; /* 모바일 환경에서는 높이를 조금 줄임 */
+    }
+  
+  }
+  
+  @media screen and (min-width: 1025px) {
+
+    body {
+      max-width: 400px;
+      margin:5vh auto 5vh auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+      max-height: 90vh;
+    }
+
+    
+
+  }

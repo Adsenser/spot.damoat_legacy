@@ -1,0 +1,646 @@
+/* 구글 폰트 적용 파트 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: "Nanum Gothic";
+}
+
+body {
+  height: 100vh;
+}
+
+/* 컨텐츠 영역 */
+
+#map-container {
+  display: block;
+  width: 100%; /*원래는 95*/
+  margin: 0 auto;
+  height: calc(100% - 60px);
+  /* border-radius: 6px; */
+  overflow: hidden;
+  /* z-index:0; */
+  box-shadow: 0 -3px 4px rgba(0, 0, 0, 0.3);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  /* z-index:0; */
+}
+
+.site-heading {
+  text-align: center;
+  color: #fff;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#upper-box {
+  background-color: rgb(135, 172, 246);
+  padding: 1%;
+  margin-bottom: 2.5%;
+  height: 52px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  touch-action: none;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-map-control-button {
+  background-color: #fff;
+  border: 2px solid rgba(193, 191, 187);
+  border-radius: 3px;
+  /*box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);*/
+  cursor: pointer;
+  margin: 13px;
+  padding: 0.7em 0.7em;
+  height: 30px;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color: #121212;
+  font-weight: 500;
+}
+
+.custom-map-control-button:hover {
+  background-color: #ebebeb;
+}
+
+#loading {
+  display: none;
+  position: fixed;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.786);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  color: #323232;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 227px;
+}
+
+@keyframes smoothBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.smooth-blink {
+  animation: smoothBlink 1.3s infinite;
+}
+
+/* 클러스터  */
+.marker-cluster-large {
+  background-color: rgba(87, 197, 241, 0.685);
+  color: white;
+}
+.marker-cluster-large div {
+  background-color: rgba(12, 172, 240, 0.7);
+}
+
+.marker-cluster-small {
+  color: white;
+  background-color: #0082e649;
+}
+
+.marker-cluster-small div {
+  font-weight: bold;
+  background-color: #1288e3c5;
+}
+
+.marker-cluster-medium {
+  color: white;
+  background-color: rgba(87, 197, 241, 0.6);
+}
+
+.marker-cluster-medium div {
+  font-weight: bold;
+  background-color: rgba(38, 176, 235, 0.7);
+}
+
+/* 팝업창 파트  */
+.popup-content {
+  font-family: "Arial", sans-serif;
+  color: #333;
+  line-height: 1.4;
+  width: 280px;
+}
+
+#placeInformationTop {
+  display: flex;
+  justify-content: space-between;
+  line-height: 20px;
+  height: 20px;
+}
+
+#placeInformationTop h3 {
+  margin: auto 0;
+}
+
+#placeInformationTop #placeInformationButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+#placePopupReportButton,
+#placePopupEditButton,
+#placePopupShareButton {
+  font-size: 7px;
+  height: 12px;
+  border: none;
+  padding: 2px 4px;
+  background-color: #f7f7f7;
+  margin: auto 1px;
+  border-radius: 4px;
+  color: #515151;
+  font-weight: 200;
+}
+
+#placePopupShareButton {
+  font-size: 9px;
+  height: 16px;
+  font-weight: 200;
+  background-color: #efefef;
+}
+
+.popup-content h3 {
+  color: #4b62ad;
+  padding: 2px;
+}
+
+#placeInformationMiddle {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 2px;
+}
+
+.popup-content h4 {
+  margin: auto 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+#placeInformationTop p {
+  font-size: 8px;
+  margin-right: 1px;
+  color: #808080;
+}
+
+.popup-content p {
+  margin: 5px 0;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+}
+
+#MarkerPopupDescription {
+  background-color: #fafafa;
+  padding: 5px;
+  border-radius: 6px;
+  margin-top: 2px;
+}
+
+.leaflet-container a {
+  font-size: 8px;
+  text-decoration: none;
+  color: #666;
+}
+
+#MarkerPopupRenewCount {
+  font-size: 8px;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.03px;
+}
+
+#placeInformationBottom {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#placeInformationBottom button {
+  margin: 5px 5px 5px 0;
+  padding: 5px 10px;
+  background-color: #4b62ad;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+}
+
+#placeInformationBottom #PlaceInformationRouteButton {
+  background-color: #4b62adef;
+}
+
+.popup-content button:hover {
+  background-color: #4b62ad90;
+}
+
+/* Hide the default Leaflet popup close button */
+.leaflet-popup-close-button {
+  display: none;
+}
+
+/* 아래는 모달창 파트 */
+/* global.css로 이사함 */
+
+/* 네비게이션 바 파트  */
+/* 네비게이션 바 스타일 */
+nav {
+  background: #4b62ad;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0px;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  padding: 0px 10px 0 10px;
+  color: white;
+  font-size: 29px;
+  line-height: 20px;
+  font-family: "Baloo Bhaijaan 2" !important;
+  margin-left: 5px;
+  /* margin-bottom: 1px; */
+  margin-top: 5px;
+  letter-spacing: 0px;
+}
+
+.logo small {
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+.logo a {
+  text-decoration-line: none;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 5px;
+}
+
+.nav-links li a {
+  color: white;
+  font-size: 17px;
+  padding: 7px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  text-decoration-line: none;
+  font-weight: 500;
+  background-color: #3050b7;
+  margin-right: 7px;
+  font-weight: bold;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  background: #405cb9d5;
+  transition: background-color 0.3s;
+}
+
+.logo img {
+  height: 34px;
+  vertical-align: middle;
+  padding-bottom: 7px;
+}
+
+/* 초기 최초구동 모달창 파트  */
+.initial-modal {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  bottom: -50%;
+  width: 100%;
+  height: 250px;
+  background-color: none;
+  transition: opacity 0.5s, bottom 0.5s; /* 투명도와 위치에 대한 애니메이션 */
+  z-index: 1000;
+}
+
+.initial-modal.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 0; /* 최종 위치 */
+}
+
+.initial-modal.hidden {
+  opacity: 0;
+  bottom: -50%; /* 원래 숨겨진 위치로 돌아감 */
+}
+
+.initial-modal-content {
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+  height: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 모달창 내부 구성  */
+/* 상단 부분 스타일 */
+.initial-top .top,
+.initial-top .bottom {
+  margin-bottom: 13px;
+  font-size: 0.9em;
+}
+
+.initial-top .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+
+.marker-icon {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 100px;
+}
+
+.marker-icon img {
+  width: 30px;
+  height: auto;
+}
+
+.marker-icon p {
+  margin: 0;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* 하단 텍스트 스타일 */
+.initial-top .bottom p {
+  color: #666;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* 중간 부분 스타일 */
+.initial-middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+  margin-bottom: 0.8em;
+}
+
+.initial-middle p {
+  text-align: center;
+}
+
+.initial-middle img {
+  width: 30px;
+  height: auto;
+}
+
+.initial-middle p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* 검색 모달창  */
+.search-button {
+  background-color: #fff;
+  border: 2px solid rgba(193, 191, 187);
+  border-radius: 3px;
+  /*box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);*/
+  cursor: pointer;
+  margin: 13px;
+  padding: 0.7em 0.7em;
+  height: 30px;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color: #121212;
+  font-weight: 500;
+}
+
+.modal {
+  animation: fadeIn 0.3s ease-out forwards;
+
+  cursor: pointer; /* iOS에서 클릭 이벤트 트리거 개선 */
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  overflow: hidden;
+  touch-action: none;
+  margin-top: 60px;
+}
+
+.modal-content {
+  animation: fadeIn 0.4s ease-out forwards;
+
+  background-color: #ffffff;
+  margin: 15% auto 27% auto;
+  padding: 26px;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.search-modal-top {
+  display: flex;
+  justify-content: center;
+}
+
+#searchInput {
+  background-color: #fff;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  margin: 10px;
+  padding: 0 0.5em;
+  height: 40px;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color: #232323;
+  font-weight: 500;
+  width: 60%;
+}
+
+#searchButton {
+  background-color: #4b62ad;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  margin: 10px 5px;
+  padding: 0 0.5em;
+  height: 40px;
+  font-size: 13px;
+  text-align: center;
+  position: relative;
+  float: right;
+  color: #232323;
+  font-weight: 600;
+  width: 30%;
+  color: white;
+}
+
+#searchResults {
+  list-style: none;
+  margin: 3px;
+  padding: 0;
+  max-height: 40vh; /* 적절한 최대 높이 설정 */
+  overflow-y: auto; /* 스크롤바 추가 */
+}
+
+#searchResults li {
+  padding: 5px;
+}
+
+.search-result {
+  margin: 5px;
+  background-color: #f6f6f6b2;
+  border-radius: 6px;
+  padding: 3px;
+  box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+}
+
+#searchResults li:hover {
+  background-color: #f7f7f7;
+}
+
+/* 검색창 로딩 서클  */
+.loading-circle {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #4b62ad;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin_small 2s linear infinite;
+  display: none;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Safari를 위한 애니메이션 */
+@-webkit-keyframes spin_small {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* 나머지 브라우저를 위한 애니메이션 */
+@keyframes spin_small {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#bug-report {
+  font-size: 9px;
+  color: #aaa;
+  text-decoration: none;
+  margin-top: 100px;
+}
+
+/* 미디어쿼리 파트 */
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+  }
+
+  #map {
+    height: 100%;
+  }
+
+  .custom-map-control-button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .initial-modal-content {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+  .initial-modal-content {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    max-width: 1200px;
+    margin: 5vh auto 5vh auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+    max-height: 90vh;
+  }
+
+  .initial-modal-content {
+    max-width: 400px;
+  }
+}
