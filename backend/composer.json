@@ -1,0 +1,9 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "^3.298"
+    }
+    ,
+    "config": {
+        "vendor-dir": "/volume1/Damoat_WEB/damoat.com/vendor"
+    }
+}
