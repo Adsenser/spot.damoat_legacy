@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /edit/
-Disallow: /.git/
-Disallow: /share/
-
-#DaumWebMasterTool:43eb3fe1b2b2b41481de8e8cb954229ef159d44948799af200409cedcd2532ff:DYm4XRwgEaFboosizwKeDw==
